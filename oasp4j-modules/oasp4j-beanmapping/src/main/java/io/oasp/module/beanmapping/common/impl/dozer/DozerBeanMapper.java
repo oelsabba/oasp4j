@@ -1,4 +1,4 @@
-package io.oasp.module.beanmapping.common.impl;
+package io.oasp.module.beanmapping.common.impl.dozer;
 
 import io.oasp.module.beanmapping.common.base.AbstractBeanMapper;
 
@@ -9,7 +9,7 @@ import org.dozer.Mapper;
 
 /**
  * This is the implementation of {@link io.oasp.module.beanmapping.common.api.BeanMapper} using dozer {@link Mapper}.
- * 
+ *
  * @author hohwille
  */
 @Named

@@ -1,21 +1,21 @@
-package io.oasp.module.beanmapping.common.impl;
+package io.oasp.module.beanmapping.common.impl.orika;
 
 import io.oasp.module.beanmapping.common.base.AbstractBeanMapper;
 
 import javax.inject.Inject;
 
-import org.dozer.Mapper;
+import ma.glasnost.orika.MapperFacade;
 
 /**
  * TODO This is the implementation of {@link io.oasp.module.beanmapping.common.api.BeanMapper} using orika
- * {@link ma.glasnost.orika.Mapper}.
+ * {@link ma.glasnost.orika.MapperFacade}.
  *
  * @author oelsabba
  */
 public class OrikaBeanMapper extends AbstractBeanMapper {
 
-  /** The dozer instance to use. */
-  private Mapper orika;
+  /** The orika instance to use. */
+  private MapperFacade orika;
 
   /**
    * The constructor.
@@ -23,13 +23,14 @@ public class OrikaBeanMapper extends AbstractBeanMapper {
   public OrikaBeanMapper() {
 
     super();
+
   }
 
   /**
    * @param orika is the {@link ma.glasnost.orika.Mapper} to {@link Inject}.
    */
   @Inject
-  public void setOrika(Mapper orika) {
+  public void setOrika(MapperFacade orika) {
 
     this.orika = orika;
   }
@@ -38,10 +39,12 @@ public class OrikaBeanMapper extends AbstractBeanMapper {
    * {@inheritDoc}
    */
   @Override
-  public <T> T map(Object source, Class<T> targetClass) {
+  public <T> T map(Object source, Class<T> targetType) {
 
-    // TODO Auto-generated method stub
-    return null;
+    if (source == null) {
+      return null;
+    }
+
+    return this.orika.map(source, targetType);
   }
-
 }
